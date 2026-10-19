@@ -1,9 +1,18 @@
 services:
+  makecert:
+    build: .
+    image: login-demo
+    command: sh -c "python makecert.py && cp cert.pem cert.crt"
+    volumes:
+      - .:/app
+    profiles: ["setup"]   # only runs when called explicitly
+
   web:
     build: .
+    image: login-demo
     ports:
-      - "5000:5000"   # HTTPS -> https://localhost:5000
-      - "5001:5001"   # HTTP  -> http://localhost:5001
+      - "5000:5000"   # HTTPS
+      - "5001:5001"   # HTTP
     volumes:
-         - ./cert.pem:/app/cert.pem:ro
-         - ./key.pem:/app/key.pem:ro
+      - ./cert.pem:/app/cert.pem:ro
+      - ./key.pem:/app/key.pem:ro

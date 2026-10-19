@@ -4,17 +4,16 @@ Flask login page served over HTTPS (port 5000) and HTTP (port 5001), run in Dock
 
 
 ## Setup
-
-**Requirements:** Docker Desktop (running)
-
+ 
+**Requirement:** Docker Desktop (running). Nothing else to install.
+ 
 ### 1. Generate the certificate
-
+ 
 ```bash
-pip install cryptography
-python makecert.py
+docker compose run --rm makecert
 ```
-
-This creates `cert.pem` and `key.pem` in the project folder.
+ 
+This creates `cert.pem`, `key.pem` and `cert.crt` in the project folder.
 
 ### 2. Convert the cert to `.crt`
 
@@ -57,4 +56,4 @@ docker compose up      # start again (add --build after code changes)
 
 ## Notes
 
-- ** Sometimes, your connection is not private(not safe) warning may show up even after u have trusted the cert. In this case, please fully close your current browser and restart. 
+- Sometimes, your connection is not private(not safe) warning may show up even after u have trusted the cert. In this case, please fully close your current browser and restart. 
