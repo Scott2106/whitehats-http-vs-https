@@ -15,16 +15,8 @@ docker compose run --rm makecert
  
 This creates `cert.pem`, `key.pem` and `cert.crt` in the project folder.
 
-### 2. Convert the cert to `.crt`
 
-Make a copy of `cert.pem` named `cert.crt`:
-
-```bash
-copy cert.pem cert.crt        # Windows
-# cp cert.pem cert.crt        # Mac / Linux
-```
-
-### 3. Trust the cert on Windows [click here for more details ] (https://docs.google.com/document/d/1r7OCMe1qNxs2VyINuTBSqkUC-T5PqsugJTfgQyfKYKE/edit?usp=sharing)
+### 2. Trust the cert on Windows [click here for more details ] (https://docs.google.com/document/d/1r7OCMe1qNxs2VyINuTBSqkUC-T5PqsugJTfgQyfKYKE/edit?usp=sharing)
 
 1. Double-click `cert.crt`
 2. Click **Install Certificate**
@@ -34,13 +26,13 @@ copy cert.pem cert.crt        # Windows
 6. **Next**, **Finish**, then **Yes** on the security prompt
 7. Fully close and reopen Chrome
 
-### 4. Build and run
+### 3. Build and run
 
 ```bash
 docker compose up --build
 ```
 
-### 5. Open
+### 4. Open
 
 - HTTPS: https://localhost:5000
 - HTTP: http://localhost:5001
