@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"   # HTTPS -> https://localhost:5000
+      - "5001:5001"   # HTTP  -> http://localhost:5001
+    volumes:
+         - ./cert.pem:/app/cert.pem:ro
+         - ./key.pem:/app/key.pem:ro
