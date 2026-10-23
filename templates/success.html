@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted · Whitehat Society</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="card">
+        <div class="brand">
+            <img src="{{ url_for('static', filename='whitehats_logo.png') }}" alt="Whitehat Society" class="logo">
+        </div>
+
+        <div class="check">✓</div>
+        <h2>Login submitted</h2>
+        <p class="subtitle">Thanks{% if username %}, <strong>{{ username }}</strong>{% endif %}!</p>
+
+        <div id="status" class="status insecure">
+            <span class="icon">👀</span>
+            <div>
+                <strong>Now check the terminal</strong>
+                Over HTTP, your password travelled across the network in plain text. Look at what the server (and anyone sniffing) could see.
+            </div>
+        </div>
+
+        <a href="/" class="button-link">Back to login</a>
+
+        <p class="footer">Whitehat Society · HTTP vs HTTPS demo</p>
+    </main>
+
+    <script>
+        if (location.protocol === "https:") {
+            const s = document.getElementById("status");
+            s.className = "status secure";
+            s.innerHTML =
+                '<span class="icon">🔒</span><div><strong>Sent over HTTPS</strong>' +
+                'The server still received your login, but anyone sniffing the network only saw encrypted data.</div>';
+        }
+    </script>
+</body>
+</html>

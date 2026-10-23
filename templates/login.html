@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login · Whitehat Society</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="POST" action="/">
-        <label>Username:</label><br>
-        <input type="text" name="username" required><br><br>
+    <main class="card">
+        <div class="brand">
+            <img src="{{ url_for('static', filename='whitehats_logo.png') }}" alt="Whitehat Society" class="logo">
+        </div>
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
+        <h2>Welcome back</h2>
+        <p class="subtitle">Sign in to continue</p>
 
-        <button type="submit">Login</button>
-    </form>
+        <div id="status" class="status insecure">
+            <span class="icon">🔓</span>
+            <div>
+                <strong>Not secure (HTTP)</strong>
+                Your username and password will be sent in plain text. Anyone on the network can read them.
+            </div>
+        </div>
+
+        <form method="POST" action="/">
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username" required>
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+            </div>
+
+            <button type="submit">Log in</button>
+        </form>
+
+        <p class="footer">Whitehat Society · HTTP vs HTTPS demo</p>
+    </main>
+
+    <script>
+        // this will show if the webpage is http or https
+        if (location.protocol === "https:") {
+            const s = document.getElementById("status");
+            s.className = "status secure";
+            s.innerHTML =
+                '<span class="icon">🔒</span><div><strong>Encrypted (HTTPS)</strong>' +
+                'Your login is encrypted with TLS. Someone sniffing the network only sees scrambled data.</div>';
+        }
+    </script>
 </body>
 </html>
