@@ -11,8 +11,10 @@ services:
     build: .
     image: login-demo
     ports:
-      - "5000:5000"   # HTTPS
-      - "5001:5001"   # HTTP
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      - HOST=0.0.0.0
     volumes:
       - ./cert.pem:/app/cert.pem:ro
       - ./key.pem:/app/key.pem:ro
